@@ -31,17 +31,23 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="font-heading text-xl font-semibold mb-6 text-white">Quick Links</h3>
             <ul className="space-y-4">
-              {['Home', 'About', 'Services', 'Privacy Policy', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
+              {[
+                { label: 'Home', href: '/' },
+                { label: 'About', href: '/about' },
+                { label: 'Services', href: '/services' },
+                { label: 'Privacy Policy', href: '/privacy' },
+                { label: 'Disclaimer', href: '/disclaimer' },
+                { label: 'Contact', href: '/contact' },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
                     className="text-white/80 hover:text-secondary transition-colors inline-block"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
