@@ -239,10 +239,10 @@ export function PrivacyPolicyPage() {
                 <p>For questions or concerns regarding this Privacy Policy or our data security practices, please contact our Compliance Office:</p>
                 <div className="bg-gray-50 p-6 rounded-xl border border-border mt-4 not-prose">
                   <p className="font-bold text-primary mb-1">Champion Cargo LLC Compliance Office</p>
-                  <p className="text-muted-foreground mb-1">123 Commerce Drive, Suite 400</p>
-                  <p className="text-muted-foreground mb-4">Chicago, IL 60601</p>
+                  <p className="text-muted-foreground mb-1">510 GREEN LEA WAY APT 1F</p>
+                  <p className="text-muted-foreground mb-4">SUNBURY, OH 43074</p>
                   <p className="text-muted-foreground mb-1"><strong>Email:</strong> privacy@championcargo.com</p>
-                  <p className="text-muted-foreground"><strong>Phone:</strong> 1-800-CHAMPION</p>
+                  <p className="text-muted-foreground"><strong>Phone:</strong> 330-756-7732</p>
                 </div>
               </PrivacySection>
 

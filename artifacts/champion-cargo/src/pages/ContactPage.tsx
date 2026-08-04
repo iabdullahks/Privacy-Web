@@ -43,12 +43,12 @@ export function ContactPage() {
                 <ContactCard 
                   title="Corporate Headquarters"
                   icon={<MapPin size={24} />}
-                  details={<p>123 Commerce Drive, Suite 400<br />Chicago, IL 60601</p>}
+                  details={<p>510 GREEN LEA WAY APT 1F<br />SUNBURY, OH 43074</p>}
                 />
                 <ContactCard 
                   title="Phone Support"
                   icon={<Phone size={24} />}
-                  details={<p>1-800-CHAMPION<br />(1-800-242-6746)</p>}
+                  details={<p>330-756-7732</p>}
                 />
                 <ContactCard 
                   title="Email"

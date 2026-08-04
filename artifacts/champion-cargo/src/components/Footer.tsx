@@ -66,11 +66,11 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-white/80">
                 <MapPin size={20} className="text-secondary shrink-0 mt-1" />
-                <span>123 Commerce Drive, Suite 400<br />Chicago, IL 60601</span>
+                <span>510 GREEN LEA WAY APT 1F<br />SUNBURY, OH 43074</span>
               </li>
               <li className="flex items-center gap-3 text-white/80">
                 <Phone size={20} className="text-secondary shrink-0" />
-                <span>1-800-CHAMPION</span>
+                <span>330-756-7732</span>
               </li>
               <li className="flex items-center gap-3 text-white/80">
                 <Mail size={20} className="text-secondary shrink-0" />
