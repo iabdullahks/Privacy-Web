@@ -141,9 +141,6 @@ export function PrivacyPolicyPage() {
                       <strong className="text-primary">To Communicate with You:</strong> We use your contact information to respond to your inquiries, provide legal services, send administrative information, and keep you informed about your case or our services.
                     </li>
                     <li>
-                      <strong className="text-primary">Marketing and Promotional Communications:</strong> With your consent, we may use your information to send you updates, newsletters, or marketing communications via email, phone, or text message. You can opt out of receiving these communications at any time by following the instructions provided in the communication or contacting us directly.
-                    </li>
-                    <li>
                       <strong className="text-primary">Legal Compliance:</strong> We may use your information to comply with applicable laws, regulations, or legal obligations, including responding to subpoenas, court orders, or legal requests.
                     </li>
                   </ul>
