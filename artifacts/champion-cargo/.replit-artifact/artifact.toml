@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Champion Cargo LLC"
+description = "A modern, premium, responsive frontend website for Champion Cargo LLC — a professional logistics and transportation company. Includes Home, About, Services, Privacy Policy (main focus with sticky sidebar navigation, reading progress bar, search, and rich legal UX), and Contact pages. Frontend only, no backend."
+version = "1.0.0"
+id = "artifacts/champion-cargo"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25390
+
+[services.development]
+run = "pnpm --filter @workspace/champion-cargo run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/champion-cargo", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/champion-cargo/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25390"
+BASE_PATH = "/"

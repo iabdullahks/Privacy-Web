@@ -1,0 +1,336 @@
+# Lovable Prompt – Champion Cargo LLC Website (Frontend Only)
+
+Create a **modern, premium, responsive frontend website** for **Champion Cargo LLC**, a professional logistics and transportation company. This is **frontend only**—do **not** create any backend, database, authentication, admin panel, APIs, CMS, forms processing, or server-side functionality. Any forms should be UI-only with validation and placeholder success states.
+
+## Objective
+
+The primary goal is to create a trustworthy, corporate website where the **Privacy Policy page is the most important page**. The website should communicate professionalism, security, transparency, and compliance.
+
+## Technology Stack
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
+* Lucide React Icons
+* Fully Responsive
+* SEO-ready frontend
+* Accessibility (WCAG)
+
+## Design Style
+
+Design a premium corporate logistics website.
+
+Use:
+
+* White background
+* Navy Blue (#0F2D52)
+* Gold accents (#D4AF37)
+* Light Gray sections
+* Dark text (#1F2937)
+* Plenty of whitespace
+* Rounded corners (16–20px)
+* Soft shadows
+* Smooth hover animations
+* Clean typography
+* Elegant micro-interactions
+
+The design should look like a high-end logistics company, not a generic trucking website.
+
+---
+
+# Pages
+
+Create the following pages:
+
+1. Home
+2. About Us
+3. Services
+4. Privacy Policy (Highest Priority)
+5. Contact
+
+---
+
+# Navigation
+
+Create a sticky responsive navigation bar with:
+
+* Company Logo (text placeholder)
+* Home
+* About
+* Services
+* Privacy Policy
+* Contact
+* CTA Button ("Get a Quote")
+
+Include:
+
+* Mobile hamburger menu
+* Smooth scrolling
+* Active page highlighting
+* Sticky on scroll
+
+---
+
+# Home Page
+
+Design a clean corporate homepage including:
+
+* Large Hero Section
+* Company introduction
+* Services overview cards
+* Why Choose Champion Cargo LLC
+* Trust & Compliance section
+* Customer-first messaging
+* CTA banner
+* Professional footer
+
+Use subtle animations throughout.
+
+---
+
+# About Page
+
+Include:
+
+* Company Overview
+* Mission
+* Vision
+* Core Values
+* Industry Experience
+* Commitment to Safety
+* Commitment to Privacy
+
+Use icons, cards, and timeline-style layouts.
+
+---
+
+# Services Page
+
+Create modern service cards for:
+
+* Freight Transportation
+* Logistics Solutions
+* Supply Chain Support
+* Dedicated Transportation
+* Time-Critical Deliveries
+* Customer Support
+
+Each card should include:
+
+* Icon
+* Title
+* Description
+* Learn More button (UI only)
+
+---
+
+# Privacy Policy Page (MAIN FOCUS)
+
+This page should receive the highest design attention.
+
+Do NOT display it as a plain text page.
+
+Create a premium legal experience.
+
+## Hero Section
+
+Large heading:
+
+**Privacy Policy**
+
+Subheading explaining Champion Cargo LLC's commitment to protecting customer information.
+
+Add:
+
+* Shield illustration
+* Lock icon
+* Soft gradient background
+* Trust-focused design
+
+---
+
+## Sticky Sidebar Navigation
+
+Desktop:
+
+Create a sticky left navigation containing:
+
+* Introduction
+* Information We Collect
+* How We Use Information
+* Cookies
+* Third-Party Services
+* Information Sharing
+* Data Security
+* User Rights
+* Children's Privacy
+* Changes to This Policy
+* Contact Information
+
+The active section should highlight while scrolling.
+
+Enable smooth scrolling.
+
+---
+
+## Content Sections
+
+Each section should appear inside elegant cards with:
+
+* Rounded corners
+* Soft shadows
+* Comfortable spacing
+* Hover elevation
+* Smooth fade animation
+
+Use excellent typography:
+
+* Headings: 34px
+* Subheadings: 24px
+* Paragraphs: 18px
+* Maximum reading width: 850px
+* Line height: 1.8
+
+---
+
+## Privacy Sections
+
+Generate professional placeholder content for:
+
+* Introduction
+* Information We Collect
+* Personal Information
+* Business Information
+* Technical Information
+* Device Information
+* Browser Information
+* IP Address
+* Cookies
+* Analytics
+* Third-Party Services
+* Information Sharing
+* Data Security
+* Encryption
+* User Rights
+* Data Retention
+* Children's Privacy
+* International Transfers
+* Policy Updates
+* Contact Information
+
+Each section should include an appropriate Lucide icon.
+
+---
+
+## Additional UX Features
+
+Add frontend-only functionality:
+
+* Reading Progress Bar
+* Estimated Reading Time
+* Back to Top button
+* Copy Page Link button
+* Print button
+* Download PDF button (placeholder)
+* Search within Privacy Policy (frontend only)
+* Smooth section transitions
+* Active sidebar highlighting
+* Scroll spy navigation
+
+---
+
+# Contact Page
+
+Include:
+
+* Contact information cards
+* Office address placeholder
+* Phone placeholder
+* Email placeholder
+* Business hours
+* Embedded map placeholder
+* Contact form (UI only)
+
+Do not implement backend submission.
+
+---
+
+# Footer
+
+Include:
+
+* Company description
+* Quick Links
+* Services
+* Privacy Policy
+* Contact
+* Social media icons
+* Copyright
+* "Designed with professionalism and trust in mind."
+
+---
+
+# Animations
+
+Use Framer Motion with subtle animations only:
+
+* Fade In
+* Fade Up
+* Slide Up
+* Hover Lift
+* Smooth page transitions
+* Button ripple/hover effects
+
+Avoid flashy animations.
+
+---
+
+# Accessibility
+
+Implement:
+
+* Semantic HTML
+* Keyboard navigation
+* ARIA labels
+* Visible focus states
+* High contrast
+* Responsive typography
+
+---
+
+# SEO (Frontend)
+
+Prepare:
+
+* Meta title placeholders
+* Meta description placeholders
+* Open Graph placeholders
+* Proper heading hierarchy
+* Semantic HTML structure
+
+---
+
+# Code Quality
+
+Create reusable React components:
+
+* Navbar
+* Footer
+* Hero
+* ServiceCard
+* PrivacySidebar
+* PrivacySection
+* ReadingProgress
+* ContactCard
+* Button
+* SectionHeading
+
+Organize the project with a clean, scalable folder structure.
+
+---
+
+## Final Goal
+
+Build a polished, enterprise-grade frontend website for **Champion Cargo LLC** where the **Privacy Policy page is the standout feature**. The design should inspire confidence, emphasize privacy and compliance, feel modern and premium, and be fully responsive across desktop, tablet, and mobile devices. The final result should look production-ready with smooth animations, excellent typography, clean UI, and no backend implementation.
