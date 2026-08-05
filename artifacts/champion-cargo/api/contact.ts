@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = 'matthenry@championcargollc.com';
-const FROM_EMAIL = 'Champion Cargo Contact <contact@send.championcargollc.com>';
+const FROM_EMAIL = 'Champion Cargo Contact <contact@championcargollc.com>';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
