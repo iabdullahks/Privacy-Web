@@ -8,6 +8,7 @@ import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 export function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [smsConsent, setSmsConsent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,6 +128,55 @@ export function ContactPage() {
                       <label className="text-sm font-semibold text-primary">Message *</label>
                       <textarea required rows={5} className="w-full p-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all resize-none" placeholder="Tell us about your logistics needs..."></textarea>
                     </div>
+
+                    {/* SMS Consent Checkbox */}
+                    <div className="rounded-2xl border border-border bg-gray-50 p-5 space-y-3">
+                      <label className="flex items-start gap-3 cursor-pointer group">
+                        <div className="relative mt-0.5 shrink-0">
+                          <input
+                            id="sms-consent"
+                            type="checkbox"
+                            required
+                            checked={smsConsent}
+                            onChange={(e) => setSmsConsent(e.target.checked)}
+                            className="sr-only peer"
+                          />
+                          <div className="w-5 h-5 rounded border-2 border-input bg-white peer-checked:bg-primary peer-checked:border-primary transition-all flex items-center justify-center group-hover:border-secondary">
+                            {smsConsent && (
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+                              </svg>
+                            )}
+                          </div>
+                        </div>
+                        <span className="text-sm text-muted-foreground leading-relaxed">
+                          <span className="font-semibold text-primary">By checking this box</span> you consent to receive conversation (external) messages from{' '}
+                          <span className="font-semibold text-primary">Champion Cargo LLC</span>.
+                        </span>
+                      </label>
+                      <ul className="text-xs text-muted-foreground space-y-1.5 pl-8 list-disc">
+                        <li>Messaging frequency may vary.</li>
+                        <li>Message and data rates may apply.</li>
+                        <li>You can opt out any time by texting <strong className="text-primary">STOP</strong>.</li>
+                        <li>
+                          For assistance, text <strong className="text-primary">HELP</strong> or visit our website at{' '}
+                          <a href="https://championcargo.com" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">
+                            championcargo.com
+                          </a>.
+                        </li>
+                        <li>
+                          Visit our{' '}
+                          <a href="/privacy" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Privacy Policy</a>{' '}
+                          and{' '}
+                          <a href="/disclaimer" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Terms of Service</a>.
+                        </li>
+                        <li>We do not share or sell SMS opt-in, or phone numbers for the purpose of SMS.</li>
+                      </ul>
+                      {!smsConsent && (
+                        <p className="text-xs text-amber-600 font-medium pl-8">* You must agree to the above to submit this form.</p>
+                      )}
+                    </div>
+
                     <Button type="submit" variant="primary" size="lg" className="w-full md:w-auto min-w-[200px]" isLoading={isSubmitting}>
                       Submit Inquiry
                     </Button>
