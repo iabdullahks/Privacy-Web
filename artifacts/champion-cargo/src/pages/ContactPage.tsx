@@ -5,19 +5,43 @@ import { ContactCard } from '@/components/ContactCard';
 import { Button } from '@/components/Button';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 
+// NOTE: Replace YOUR_FORM_ID below with your actual Formspree form ID.
+// Sign up free at https://formspree.io, create a form pointed at
+// matthenry@championcargollc.com, and paste the ID here.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
 export function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [smsConsent, setSmsConsent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate network request
-    setTimeout(() => {
+    setIsError(false);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    // Append SMS consent status clearly
+    data.set('sms_consent', smsConsent ? 'Yes – client agreed to SMS communications' : 'No – client did not opt in to SMS');
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setIsSuccess(true);
+        form.reset();
+        setSmsConsent(false);
+      } else {
+        setIsError(true);
+      }
+    } catch {
+      setIsError(true);
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
+    }
   };
 
   return (
@@ -93,30 +117,31 @@ export function ContactPage() {
                     </Button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                    <input type="hidden" name="sms_consent" value={smsConsent ? 'Yes' : 'No'} />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-semibold text-primary">Full Name *</label>
-                        <input required type="text" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="John Doe" />
+                        <input required name="full_name" type="text" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="John Doe" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-semibold text-primary">Company Name</label>
-                        <input type="text" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="Acme Corp" />
+                        <input name="company_name" type="text" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="Acme Corp" />
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-semibold text-primary">Email Address *</label>
-                        <input required type="email" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="john@example.com" />
+                        <input required name="email" type="email" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="john@example.com" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-semibold text-primary">Phone Number</label>
-                        <input type="tel" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="(555) 123-4567" />
+                        <input name="phone" type="tel" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="(555) 123-4567" />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-semibold text-primary">Cargo Type / Service Required</label>
-                      <select className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all">
+                      <select name="service_type" className="w-full h-12 px-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all">
                         <option>General Freight</option>
                         <option>Dedicated Fleet</option>
                         <option>Time-Critical</option>
@@ -126,7 +151,7 @@ export function ContactPage() {
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-semibold text-primary">Message *</label>
-                      <textarea required rows={5} className="w-full p-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all resize-none" placeholder="Tell us about your logistics needs..."></textarea>
+                      <textarea required name="message" rows={5} className="w-full p-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all resize-none" placeholder="Tell us about your logistics needs..."></textarea>
                     </div>
 
                     {/* SMS Consent Checkbox */}
@@ -136,7 +161,6 @@ export function ContactPage() {
                           <input
                             id="sms-consent"
                             type="checkbox"
-                            required
                             checked={smsConsent}
                             onChange={(e) => setSmsConsent(e.target.checked)}
                             className="sr-only peer"
@@ -172,10 +196,14 @@ export function ContactPage() {
                         </li>
                         <li>We do not share or sell SMS opt-in, or phone numbers for the purpose of SMS.</li>
                       </ul>
-                      {!smsConsent && (
-                        <p className="text-xs text-amber-600 font-medium pl-8">* You must agree to the above to submit this form.</p>
-                      )}
                     </div>
+
+                    {isError && (
+                      <div className="rounded-xl bg-red-50 border border-red-200 text-red-700 px-5 py-4 text-sm font-medium">
+                        Something went wrong. Please try again or email us directly at{' '}
+                        <a href="mailto:matthenry@championcargollc.com" className="underline font-semibold">matthenry@championcargollc.com</a>.
+                      </div>
+                    )}
 
                     <Button type="submit" variant="primary" size="lg" className="w-full md:w-auto min-w-[200px]" isLoading={isSubmitting}>
                       Submit Inquiry
