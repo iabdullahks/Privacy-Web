@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = 'matthenry@championcargollc.com';
-const FROM_EMAIL = 'Champion Cargo Contact <noreply@championcargollc.com>';
+const FROM_EMAIL = 'Champion Cargo Contact <contact@send.championcargollc.com>';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -34,7 +34,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1a1a2e;">
           <div style="background: #1a1a2e; padding: 24px 32px; border-radius: 12px 12px 0 0;">
             <h1 style="color: #ffffff; margin: 0; font-size: 22px;">New Contact Form Submission</h1>
-            <p style="color: #9ca3af; margin: 6px 0 0; font-size: 14px;">Champion Cargo LLC — championcargo.com</p>
+            <p style="color: #9ca3af; margin: 6px 0 0; font-size: 14px;">Champion Cargo LLC — championcargollc.com</p>
           </div>
           <div style="background: #f9fafb; padding: 32px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
 
@@ -80,7 +80,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
               <p style="color: #9ca3af; font-size: 12px; margin: 0;">
                 You can reply directly to this email to respond to ${full_name}.<br/>
-                Submitted via championcargo.com/contact
+                Submitted via championcargollc.com/contact
               </p>
             </div>
           </div>
