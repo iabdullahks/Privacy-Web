@@ -39,6 +39,7 @@ export function Footer() {
                 { label: 'About', href: '/about' },
                 { label: 'Services', href: '/services' },
                 { label: 'Privacy Policy', href: '/privacy' },
+                { label: 'Terms & Conditions', href: '/terms' },
                 { label: 'Disclaimer', href: '/disclaimer' },
                 { label: 'Contact', href: '/contact' },
               ].map((item) => (

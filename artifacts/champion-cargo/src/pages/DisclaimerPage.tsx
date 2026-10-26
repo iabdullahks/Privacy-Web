@@ -61,6 +61,10 @@ export function DisclaimerPage() {
                 By providing my phone number to &ldquo;CHAMPION CARGO LLC&rdquo;, I agree and acknowledge that &ldquo;CHAMPION CARGO LLC&rdquo; may send text messages to my wireless phone number for any purpose. Message and data rates may apply. Message frequency will vary, and you will be able to Opt-out by replying &ldquo;STOP&rdquo;. For more information on how your data will be handled please see our{' '}
                 <Link href="/privacy" className="text-primary font-semibold underline underline-offset-4 hover:text-secondary transition-colors">
                   Privacy Policy
+                </Link>{' '}
+                and{' '}
+                <Link href="/terms" className="text-primary font-semibold underline underline-offset-4 hover:text-secondary transition-colors">
+                  Terms and Conditions
                 </Link>
                 .
               </p>

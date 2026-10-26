@@ -347,9 +347,13 @@ export function PrivacyPolicyPage() {
                       By opting into SMS from a web form or other medium, you are agreeing to receive SMS messages from <strong className="text-primary">Champion Cargo LLC</strong>. This includes shipment updates and services. Message and data rates may apply. Message frequency may vary.
                     </p>
                     <p className="text-muted-foreground leading-relaxed text-sm">
-                      See privacy policy at{' '}
+                      See our full{' '}
                       <Link href="/privacy" className="text-primary font-semibold underline underline-offset-4 hover:text-secondary transition-colors">
-                        championcargo.com/privacy
+                        Privacy Policy
+                      </Link>{' '}
+                      and complete{' '}
+                      <Link href="/terms" className="text-primary font-semibold underline underline-offset-4 hover:text-secondary transition-colors">
+                        Terms and Conditions
                       </Link>
                       . Message HELP for help. Reply STOP to any message to opt out.
                     </p>

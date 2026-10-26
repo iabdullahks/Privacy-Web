@@ -12,6 +12,7 @@ import { ServicesPage } from '@/pages/ServicesPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { PrivacyPolicyPage } from '@/pages/PrivacyPolicyPage';
 import { DisclaimerPage } from '@/pages/DisclaimerPage';
+import { TermsPage } from '@/pages/TermsPage';
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,8 @@ function Router() {
         <Route path="/about" component={AboutPage} />
         <Route path="/services" component={ServicesPage} />
         <Route path="/privacy" component={PrivacyPolicyPage} />
+        <Route path="/terms" component={TermsPage} />
+        <Route path="/terms-and-conditions" component={TermsPage} />
         <Route path="/disclaimer" component={DisclaimerPage} />
         <Route path="/contact" component={ContactPage} />
         <Route component={NotFound} />

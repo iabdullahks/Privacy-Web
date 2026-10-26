@@ -193,9 +193,10 @@ export function ContactPage() {
                         </li>
                         <li>
                           Visit our{' '}
-                          <a href="/privacy" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Privacy Policy</a>{' '}
+                          <a href="/privacy" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Privacy Policy</a>,{' '}
+                          <a href="/terms" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Terms and Conditions</a>,{' '}
                           and{' '}
-                          <a href="/disclaimer" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Terms of Service</a>.
+                          <a href="/disclaimer" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Disclaimer</a>.
                         </li>
                         <li>We do not share or sell SMS opt-in, or phone numbers for the purpose of SMS.</li>
                       </ul>
