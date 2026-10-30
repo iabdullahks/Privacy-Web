@@ -18,6 +18,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     service_type,
     message,
     sms_consent,
+    marketing_consent,
+    dispatch_consent,
   } = req.body as Record<string, string>;
 
   if (!full_name || !email || !message) {
@@ -63,10 +65,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #111827; font-size: 15px;">${service_type}</td>
               </tr>` : ''}
               <tr>
-                <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">SMS Consent</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Marketing SMS</td>
                 <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-size: 15px;">
-                  <span style="background: ${sms_consent === 'yes' ? '#d1fae5' : '#fee2e2'}; color: ${sms_consent === 'yes' ? '#065f46' : '#991b1b'}; padding: 3px 10px; border-radius: 20px; font-size: 13px; font-weight: 600;">
-                    ${sms_consent === 'yes' ? '✓ Opted In' : '✗ Not Opted In'}
+                  <span style="background: ${marketing_consent === 'yes' ? '#d1fae5' : '#fee2e2'}; color: ${marketing_consent === 'yes' ? '#065f46' : '#991b1b'}; padding: 3px 10px; border-radius: 20px; font-size: 13px; font-weight: 600;">
+                    ${marketing_consent === 'yes' ? '✓ Opted In' : '✗ Not Opted In'}
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Dispatch SMS</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-size: 15px;">
+                  <span style="background: ${dispatch_consent === 'yes' ? '#d1fae5' : '#fee2e2'}; color: ${dispatch_consent === 'yes' ? '#065f46' : '#991b1b'}; padding: 3px 10px; border-radius: 20px; font-size: 13px; font-weight: 600;">
+                    ${dispatch_consent === 'yes' ? '✓ Opted In' : '✗ Not Opted In'}
                   </span>
                 </td>
               </tr>

@@ -4,12 +4,14 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { ContactCard } from '@/components/ContactCard';
 import { Button } from '@/components/Button';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { Link } from 'wouter';
 
 export function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [smsConsent, setSmsConsent] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
+  const [dispatchConsent, setDispatchConsent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,7 +26,9 @@ export function ContactPage() {
       phone: (form.elements.namedItem('phone') as HTMLInputElement)?.value,
       service_type: (form.elements.namedItem('service_type') as HTMLSelectElement)?.value,
       message: (form.elements.namedItem('message') as HTMLTextAreaElement)?.value,
-      sms_consent: smsConsent ? 'yes' : 'no',
+      sms_consent: (marketingConsent || dispatchConsent) ? 'yes' : 'no',
+      marketing_consent: marketingConsent ? 'yes' : 'no',
+      dispatch_consent: dispatchConsent ? 'yes' : 'no',
     };
 
     try {
@@ -37,7 +41,8 @@ export function ContactPage() {
       if (res.ok) {
         setIsSuccess(true);
         form.reset();
-        setSmsConsent(false);
+        setMarketingConsent(false);
+        setDispatchConsent(false);
       } else {
         setIsError(true);
       }
@@ -157,49 +162,71 @@ export function ContactPage() {
                       <textarea required name="message" rows={5} className="w-full p-4 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all resize-none" placeholder="Tell us about your logistics needs..."></textarea>
                     </div>
 
-                    {/* SMS Consent Checkbox */}
-                    <div className="rounded-2xl border border-border bg-gray-50 p-5 space-y-3">
-                      <label className="flex items-start gap-3 cursor-pointer group">
+                    {/* SMS Consent Checkboxes */}
+                    <div className="space-y-3 pt-1">
+                      {/* Checkbox 1: Marketing SMS */}
+                      <label className="flex items-start gap-3 cursor-pointer group select-none">
                         <div className="relative mt-0.5 shrink-0">
                           <input
-                            id="sms-consent"
+                            id="marketing-consent"
                             type="checkbox"
-                            checked={smsConsent}
-                            onChange={(e) => setSmsConsent(e.target.checked)}
+                            checked={marketingConsent}
+                            onChange={(e) => setMarketingConsent(e.target.checked)}
                             className="sr-only peer"
                           />
-                          <div className="w-5 h-5 rounded border-2 border-input bg-white peer-checked:bg-primary peer-checked:border-primary transition-all flex items-center justify-center group-hover:border-secondary">
-                            {smsConsent && (
+                          <div className="w-4.5 h-4.5 rounded-[4px] border border-gray-400 bg-white peer-checked:bg-primary peer-checked:border-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40 transition-colors flex items-center justify-center group-hover:border-primary">
+                            {marketingConsent && (
                               <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
                               </svg>
                             )}
                           </div>
                         </div>
-                        <span className="text-sm text-muted-foreground leading-relaxed">
-                          <span className="font-semibold text-primary">By checking this box</span> you consent to receive conversation (external) messages from{' '}
-                          <span className="font-semibold text-primary">Champion Cargo LLC</span>.
+                        <span className="text-xs md:text-sm text-gray-600 leading-snug">
+                          By checking this box, you agree to receive marketing SMS messages from Champion Cargo LLC about available freight opportunities and promotional offers.
                         </span>
                       </label>
-                      <ul className="text-xs text-muted-foreground space-y-1.5 pl-8 list-disc">
-                        <li>Messaging frequency may vary.</li>
-                        <li>Message and data rates may apply.</li>
-                        <li>You can opt out any time by texting <strong className="text-primary">STOP</strong>.</li>
-                        <li>
-                          For assistance, text <strong className="text-primary">HELP</strong> or visit our website at{' '}
-                          <a href="https://championcargo.com" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">
-                            championcargo.com
-                          </a>.
-                        </li>
-                        <li>
-                          Visit our{' '}
-                          <a href="/privacy" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Privacy Policy</a>,{' '}
-                          <a href="/terms" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Terms and Conditions</a>,{' '}
+
+                      {/* Checkbox 2: Active Shipments / Dispatch SMS */}
+                      <label className="flex items-start gap-3 cursor-pointer group select-none">
+                        <div className="relative mt-0.5 shrink-0">
+                          <input
+                            id="dispatch-consent"
+                            type="checkbox"
+                            checked={dispatchConsent}
+                            onChange={(e) => setDispatchConsent(e.target.checked)}
+                            className="sr-only peer"
+                          />
+                          <div className="w-4.5 h-4.5 rounded-[4px] border border-gray-400 bg-white peer-checked:bg-primary peer-checked:border-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40 transition-colors flex items-center justify-center group-hover:border-primary">
+                            {dispatchConsent && (
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+                              </svg>
+                            )}
+                          </div>
+                        </div>
+                        <span className="text-xs md:text-sm text-gray-600 leading-snug">
+                          By checking this box, you agree to receive SMS messages from Champion Cargo LLC regarding active shipments, assigned loads, and dispatch updates.
+                        </span>
+                      </label>
+
+                      {/* Compliance Disclaimers */}
+                      <div className="text-xs text-gray-500 leading-relaxed space-y-0.5 pt-1">
+                        <p>Message frequency may vary. Message and data rates may apply.</p>
+                        <p>Reply STOP to opt out or HELP for assistance.</p>
+                        <p>
+                          View our{' '}
+                          <Link href="/privacy" className="text-blue-600 underline hover:text-blue-800">
+                            Privacy Policy
+                          </Link>{' '}
                           and{' '}
-                          <a href="/disclaimer" className="text-primary underline underline-offset-2 hover:text-secondary transition-colors font-medium">Disclaimer</a>.
-                        </li>
-                        <li>We do not share or sell SMS opt-in, or phone numbers for the purpose of SMS.</li>
-                      </ul>
+                          <Link href="/terms" className="text-blue-600 underline hover:text-blue-800">
+                            Terms and Conditions
+                          </Link>
+                          .
+                        </p>
+                        <p>We do not share or sell mobile information with third parties for marketing or promotional purposes.</p>
+                      </div>
                     </div>
 
                     {isError && (
